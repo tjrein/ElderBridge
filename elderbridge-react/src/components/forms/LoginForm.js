@@ -14,8 +14,8 @@ class LoginForm extends Component {
     errors: {}
   };
 
-  onChange = e => 
-    this.setState({ 
+  onChange = e =>
+    this.setState({
       data: { ...this.state.data, [e.target.name]: e.target.value }
     });
 
@@ -42,27 +42,27 @@ class LoginForm extends Component {
       <Form onSubmit={this.onSubmit}>
         <Form.Field>
           <label htmlFor="email">Email</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            placeholder="example@example.com" 
-            value={data.email} 
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@example.com"
+            value={data.email}
             onChange={this.onChange}
           />
-          {errors.email && <InlineError text={errors.email} />} 
+          {errors.email && <InlineError text={errors.email} />}
         </Form.Field>
         <Form.Field>
-          <label htmlFor="email">Email</label>
-          <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            placeholder="**********" 
-            value={data.password} 
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="**********"
+            value={data.password}
             onChange={this.onChange}
           />
-          {errors.password && <InlineError text={errors.password} />} 
+          {errors.password && <InlineError text={errors.password} />}
         </Form.Field>
         <Button primary>Login</Button>
       </Form>
@@ -72,7 +72,7 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
   submit: PropTypes.func.isRequired
-}; 
+};
 
 
 export default LoginForm;

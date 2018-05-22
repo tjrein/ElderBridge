@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import LoginForm from '../forms/LoginForm';
 
 class LoginPage extends Component {
-  
+
   submit = data => {
-    console.log(data);
+    console.log(data.email);
+    this.props.history.push('/dashboard')
   };
 
   render() {
