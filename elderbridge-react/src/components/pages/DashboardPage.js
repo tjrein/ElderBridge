@@ -14,7 +14,7 @@ class DashboardPage extends Component {
 
   render() {
     const view_appointments_button = sessionStorage.getItem('events') ? (
-      <div><Button primary size="massive" onClick={this.onClick}>View Appointments</Button></div>
+      <div><Button primary fluid size="massive" onClick={this.onClick}>View Appointments</Button></div>
     ) : "";
 
     return (
@@ -23,8 +23,8 @@ class DashboardPage extends Component {
         <div className="ui container">
         <h1>Dashboard</h1>
           {view_appointments_button}
-          <div><Button primary size="massive" onClick={this.onClick}>Schedule an Appointment</Button></div>
-          <div><Button primary size="massive">Rate past Appointment</Button></div>
+          <div><Button primary fluid size="massive" onClick={this.onClick}>Schedule an Appointment</Button></div>
+          <div><Button primary fluid size="massive">Rate past Appointment</Button></div>
         </div>
 
       </div>
