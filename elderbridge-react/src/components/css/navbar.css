@@ -7,10 +7,12 @@ nav {
 
 }
 
-h2 {
+h1, h2 {
   color: #F1C86D;
   font-size: 4em;
   display: inline;
+	font-family: 'Josefin Slab';
+	font-weight: 600;
 }
 
 .button {

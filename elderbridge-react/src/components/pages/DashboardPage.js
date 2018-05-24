@@ -21,7 +21,6 @@ class DashboardPage extends Component {
       <div>
         <Navbar history={this.props.history}/>
         <div className="ui container">
-        <h1>Dashboard</h1>
           {view_appointments_button}
           <div><Button primary fluid size="massive" onClick={this.onClick}>Schedule an Appointment</Button></div>
           <div><Button primary fluid size="massive">Rate past Appointment</Button></div>
