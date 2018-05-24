@@ -11,6 +11,9 @@ class Appointments extends Component {
   constructor(props) {
     super(props);
 
+
+    console.log("Appintments props", props);
+
     const cached_events = sessionStorage.getItem("events");
     let events = cached_events ? JSON.parse(cached_events) : [];
 
@@ -49,7 +52,7 @@ class Appointments extends Component {
           onSelectEvent={event => this.onEventClick(event)}
           onSelectSlot={(slotInfo) => this.onSlotChange(slotInfo) }
           defaultDate={new Date()}
-          defaultView="week"
+          defaultView={this.props.view}
           events={this.state.events}
           style={{ height: "100vh" }}
         />
