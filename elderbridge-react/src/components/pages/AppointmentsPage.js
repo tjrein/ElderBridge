@@ -4,9 +4,8 @@ import Navbar from '../Navbar'
 
 class AppointmentsPage extends Component {
 
-
   render() {
-    const view = sessionStorage.getItem("events") ? "month" : "week";
+    const view = this.props.location.state.calendar_view;
 
     return (
       <div>

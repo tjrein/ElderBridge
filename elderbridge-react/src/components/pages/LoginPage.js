@@ -5,7 +5,6 @@ import Navbar from '../Navbar';
 class LoginPage extends Component {
 
   submit = data => {
-    console.log(data.email);
     this.props.history.push('/dashboard')
   };
 
@@ -15,7 +14,6 @@ class LoginPage extends Component {
         <Navbar />
         <div className="ui container">
           <h1>Login  Page</h1>
-
           <LoginForm submit={this.submit}/>
         </div>
       </div>

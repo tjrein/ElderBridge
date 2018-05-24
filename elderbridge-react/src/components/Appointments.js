@@ -11,9 +11,6 @@ class Appointments extends Component {
   constructor(props) {
     super(props);
 
-
-    console.log("Appintments props", props);
-
     const cached_events = sessionStorage.getItem("events");
     let events = cached_events ? JSON.parse(cached_events) : [];
 
