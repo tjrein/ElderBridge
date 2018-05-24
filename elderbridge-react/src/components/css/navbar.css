@@ -3,8 +3,6 @@ nav {
 	overflow: hidden;
   display: block;
 	padding: 1em;
-
-
 	border-bottom: 1px solid #000;
 
 }
@@ -12,5 +10,9 @@ nav {
 h2 {
   color: #F1C86D;
   font-size: 4em;
-  padding: 5px;
+  display: inline;
+}
+
+.button {
+  margin-top: 20px !important;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LoginForm from '../forms/LoginForm';
+import Navbar from '../Navbar';
 
 class LoginPage extends Component {
 
@@ -11,9 +12,12 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
-        <h1>Login  Page</h1>
+        <Navbar />
+        <div className="ui container">
+          <h1>Login  Page</h1>
 
-        <LoginForm submit={this.submit}/>
+          <LoginForm submit={this.submit}/>
+        </div>
       </div>
     );
   }

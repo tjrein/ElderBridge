@@ -5,18 +5,20 @@ import Navbar from "../Navbar"
 class DashboardPage extends Component {
 
   onClick = () => {
+    console.log("this.props dashboard", this.props);
     this.props.history.push("/appointments");
   }
+
 
 
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar history={this.props.history}/>
         <div className="ui container">
         <h1>Dashboard</h1>
-          <Button size="massive" onClick={this.onClick}>Schedule an Appointment</Button>
-          <Button size="massive">Rate past Appointment</Button>
+          <Button primary size="massive" onClick={this.onClick}>Schedule an Appointment</Button>
+          <Button primary size="massive">Rate past Appointment</Button>
         </div>
 
       </div>

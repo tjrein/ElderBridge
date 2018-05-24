@@ -10,7 +10,7 @@ class AppointmentsPage extends Component {
 
     return (
       <div>
-        <Navbar />
+        <Navbar history={this.props.history}/>
         <div className="ui container">
           <h1>Calendar</h1>
           <Appointments view={view} />
