@@ -1,0 +1,16 @@
+nav {
+	background-color: #217350;
+	overflow: hidden;
+  display: block;
+	padding: 1em;
+
+
+	border-bottom: 1px solid #000;
+
+}
+
+h2 {
+  color: #F1C86D;
+  font-size: 4em;
+  padding: 5px;
+}

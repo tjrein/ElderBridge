@@ -4,7 +4,7 @@ import HomePage from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 import DashboardPage from './components/pages/DashboardPage';
 import AppointmentsPage from './components/pages/AppointmentsPage'
-import Navbar from './components/Navbar';
+import './components/css/app.css';
 
 //className="ui container"
 

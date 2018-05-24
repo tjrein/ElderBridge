@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Appointments from '../Appointments.js'
+import Appointments from '../Appointments'
+import Navbar from '../Navbar'
 
 class AppointmentsPage extends Component {
 
@@ -9,9 +10,11 @@ class AppointmentsPage extends Component {
 
     return (
       <div>
-        <h1>Calendar</h1>
-
-        <Appointments view={view} />
+        <Navbar />
+        <div className="ui container">
+          <h1>Calendar</h1>
+          <Appointments view={view} />
+        </div>
       </div>
     );
   }
