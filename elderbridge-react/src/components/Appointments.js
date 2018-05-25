@@ -26,6 +26,9 @@ class Appointments extends Component {
   }
 
   onSlotChange(slotInfo) {
+    const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm:ss A");
+
+    if (window.confirm("Schedule an appointment for " + formatted_time + "?")) {
       let scheduled_events = this.state.events;
 
       scheduled_events.push({
@@ -36,6 +39,7 @@ class Appointments extends Component {
 
       this.setState(scheduled_events);
       sessionStorage.setItem('events', JSON.stringify(scheduled_events));
+    }
   }
 
   onEventClick(event) {
