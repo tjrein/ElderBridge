@@ -39,11 +39,12 @@ class Appointments extends Component {
 
       this.setState(scheduled_events);
       sessionStorage.setItem('events', JSON.stringify(scheduled_events));
+      this.props.history.push("/dashboard");
     }
   }
 
-  onEventClick(event) {
-    console.log(event) //Shows the event details provided while booking
+  onEventClick(slotInfo) {
+    window.alert("Appointment scheduled for " + moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm:ss A"));
   }
 
   render() {

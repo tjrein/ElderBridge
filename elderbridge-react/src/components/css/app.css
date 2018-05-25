@@ -14,3 +14,7 @@ i {
   color: #475B9E;
   margin-top: 10px !important;
 }
+
+.ui.grid {
+  margin-top: 75px !important;
+}

@@ -13,7 +13,6 @@ class LoginPage extends Component {
       <div>
         <Navbar />
         <div className="ui container">
-          <h1>Login  Page</h1>
           <LoginForm submit={this.submit}/>
         </div>
       </div>

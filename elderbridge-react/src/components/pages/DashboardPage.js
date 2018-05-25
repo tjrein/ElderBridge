@@ -17,7 +17,7 @@ class DashboardPage extends Component {
     const view_appointments_button = sessionStorage.getItem('events') ? (
       <div className="row">
         <div>
-          <i class="fa fa-clock-o fa-5x" aria-hidden="true"></i>
+          <i class="fa fa-clock-o fa-5x fa-fw" aria-hidden="true"></i>
         </div>
         <div className="eleven wide column">
           <Button fluid primary size="massive" onClick={this.onClick}>View Appointments</Button>
@@ -33,7 +33,7 @@ class DashboardPage extends Component {
             {view_appointments_button}
             <div className="row">
               <div>
-                <i className="fa fa-calendar-plus-o fa-5x" aria-hidden="true"></i>
+                <i className="fa fa-calendar-plus-o fa-5x fa-fw" aria-hidden="true"></i>
               </div>
               <div className="eleven wide column">
                 <Button fluid primary size="massive" onClick={this.onClick}>Schedule an Appointment</Button>
@@ -41,7 +41,7 @@ class DashboardPage extends Component {
             </div>
             <div className="row">
               <div>
-                <i className="fa fa-smile-o fa-5x" aria-hidden="true"></i>
+                <i className="fa fa-smile-o fa-5x fa-fw" aria-hidden="true"></i>
               </div>
               <div className="eleven wide column">
                 <Button fluid primary size="massive">Rate past Appointment</Button>
