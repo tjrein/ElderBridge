@@ -7,4 +7,10 @@ body {
 .ui.button {
   font-family: 'Cabin' !important;
   letter-spacing: 2px !important;
+  display: inline !important;
+}
+
+i {
+  color: #475B9E;
+  margin-top: 10px !important;
 }

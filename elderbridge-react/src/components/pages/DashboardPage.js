@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
 import Navbar from "../Navbar"
+import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 
 class DashboardPage extends Component {
 
@@ -21,9 +22,25 @@ class DashboardPage extends Component {
       <div>
         <Navbar history={this.props.history}/>
         <div className="ui container">
-          {view_appointments_button}
-          <div><Button primary fluid size="massive" onClick={this.onClick}>Schedule an Appointment</Button></div>
-          <div><Button primary fluid size="massive">Rate past Appointment</Button></div>
+          <div className="ui grid centered">
+            {view_appointments_button}
+            <div className="row">
+              <div>
+                <i className="fa fa-calendar-plus-o fa-5x" aria-hidden="true"></i>
+              </div>
+              <div className="eleven wide column">
+                <Button fluid primary size="massive" onClick={this.onClick}>Schedule an Appointment</Button>
+              </div>
+            </div>
+            <div className="row">
+              <div>
+                <i className="fa fa-smile-o fa-5x" aria-hidden="true"></i>
+              </div>
+              <div className="eleven wide column">
+                <Button fluid primary size="massive">Rate past Appointment</Button>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
