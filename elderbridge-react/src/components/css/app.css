@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=Cabin|Josefin+Slab:400,600|Inconsolata');
+@import url('https://fonts.googleapis.com/css?family=Cabin|Josefin+Slab:400,600|Inconsolata');
 
 body {
   background-color: #FDF4F1;
@@ -16,5 +16,9 @@ i {
 }
 
 .ui.grid {
+  margin-top: 75px !important;
+}
+
+.ui.form {
   margin-top: 75px !important;
 }
