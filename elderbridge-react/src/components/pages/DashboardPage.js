@@ -14,7 +14,7 @@ class DashboardPage extends Component {
   }
 
   render() {
-    const view_appointments_button = sessionStorage.getItem('events') ? (
+    let view_appointments_button = sessionStorage.getItem('events') ? (
       <div className="row">
         <div>
           <i class="fa fa-clock-o fa-5x fa-fw" aria-hidden="true"></i>

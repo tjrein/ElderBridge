@@ -20,7 +20,7 @@ class ModalExampleShorthand extends Component {
       ],
       "week":[
         { key: 'cancel', content: "Cancel", onClick: this.handleCancel, size: "large"},
-        { key: 'confrm', content: "Confirm appointment", onClick: this.handleConfirm, size: "large", positive: true}
+        { key: 'confrm', content: "Confirm appointment", onClick: this.handleConfirm, size: "large", positive: true, icon: "checkmark", labelPosition: "left"}
       ]
     }[this.props.view];
 
@@ -35,10 +35,11 @@ class ModalExampleShorthand extends Component {
     return (
       <Modal
         open={this.props.open}
-        header='Reminder!'
-        content='Call Benjamin regarding the reports.'
+        header={this.props.header}
+        content={this.props.content}
         actions={actions}
         style={inlineStyle.modal}
+        size="large"
       />
     )
   }

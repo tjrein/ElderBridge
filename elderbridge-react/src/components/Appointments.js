@@ -25,15 +25,18 @@ class Appointments extends Component {
       events: events,
       openModal: false,
       modalContent: '',
+      modalHeader: '',
       newTime: null
     }
 
     if (this.props.view === "week") {
       this.cancelCallback = this.closeModal;
       this.confirmCallback = this.scheduleAppointment;
+      this.state.modalHeader = "Schedule appointment for the following date?";
     } else {
       this.cancelCallback = this.cancelAppointment;
-      this.confirmCallback - this.closeModal;
+      this.confirmCallback = this.closeModal;
+      this.state.modalHeader = "Appointment scheduled for the following date";
     }
 
     this.modalHandler = this.modalHandler.bind(this);
@@ -56,6 +59,17 @@ class Appointments extends Component {
           scheduled_events.splice(i, 1);
         }
     }
+
+    this.eventHandler(scheduled_events);
+  }
+
+  eventHandler = newEvents => {
+    this.setState(newEvents)
+    if (newEvents.length) {
+      sessionStorage.setItem('events', JSON.stringify(newEvents));
+    } else {
+      sessionStorage.clear();
+    }
   }
 
   scheduleAppointment = result =>  {
@@ -70,8 +84,7 @@ class Appointments extends Component {
         title: "Appointment"
       });
 
-      this.setState(scheduled_events);
-      sessionStorage.setItem('events', JSON.stringify(scheduled_events));
+      this.eventHandler(scheduled_events)
       this.props.history.push("/dashboard");
     }
 
@@ -79,28 +92,35 @@ class Appointments extends Component {
   }
 
 
-  onSlotChange(slotInfo) {
+  onSlotClick(slotInfo) {
+    if (this.props.view === "month") return;
     const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm:ss A");
     this.modalHandler(true, formatted_time);
     this.setState({newTime: slotInfo.start});
   }
 
   onEventClick(slotInfo) {
+    if (this.props.view === "week") return;
     const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm:ss A");
     this.modalHandler(true, formatted_time);
     this.setState({newTime: slotInfo.start});
   }
 
- //<DefaultConfirm open={false} content={this.state.modalContent} callback={this.scheduleCallback} />
-
   render() {
     return (
       <div>
-        <ModalExampleShorthand view={this.props.view} open={this.state.openModal} cancel={this.cancelCallback} confirm={this.confirmCallback} />
+        <ModalExampleShorthand
+          view={this.props.view}
+          open={this.state.openModal}
+          cancel={this.cancelCallback}
+          confirm={this.confirmCallback}
+          header = {this.state.modalHeader}
+          content={this.state.modalContent}
+        />
         <BigCalendar
           selectable
-          onSelectEvent={event => this.onEventClick(event)}
-          onSelectSlot={slotInfo => this.onSlotChange(slotInfo) }
+          onSelectEvent={slotInfo => this.onEventClick(slotInfo)}
+          onSelectSlot={slotInfo => this.onSlotClick(slotInfo) }
           defaultDate={new Date()}
           defaultView={this.props.view}
           views={[this.props.view]}
