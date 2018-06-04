@@ -14,7 +14,7 @@ class RatingPage extends Component {
     this.setState({ [key]: "grey" });
   }
 
-  handleHover= e => {
+  handleHover = e => {
     let key = e.currentTarget.id;
     let color = {
       smile: "green",
@@ -24,6 +24,8 @@ class RatingPage extends Component {
 
     this.setState({ [key]: color });
   }
+
+  submit = e => this.props.history.push("/dashboard");
 
   render() {
     return (
@@ -66,7 +68,7 @@ class RatingPage extends Component {
           <Form>
             <TextArea placeholder='Tell us more' style={{ minHeight: 100 }} />
             <div className="ui container center aligned">
-              <Button primary size="massive" type='submit'>Submit</Button>
+              <Button primary size="massive" type='submit' onClick={this.submit}>Submit</Button>
             </div>
           </Form>
         </div>
