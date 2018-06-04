@@ -13,11 +13,15 @@ class DashboardPage extends Component {
     });
   }
 
+  ratingClick = (e) => {
+    this.props.history.push({pathname: "/rate"})
+  }
+
   render() {
     let view_appointments_button = sessionStorage.getItem('events') ? (
       <div className="row">
         <div>
-          <i class="fa fa-clock-o fa-5x fa-fw" aria-hidden="true"></i>
+          <i className="fa fa-clock-o fa-5x fa-fw" aria-hidden="true"></i>
         </div>
         <div className="eleven wide column">
           <Button fluid primary size="massive" onClick={this.onClick}>View Appointments</Button>
@@ -44,7 +48,7 @@ class DashboardPage extends Component {
                 <i className="fa fa-smile-o fa-5x fa-fw" aria-hidden="true"></i>
               </div>
               <div className="eleven wide column">
-                <Button fluid primary size="massive">Rate past Appointment</Button>
+                <Button fluid primary size="massive" onClick={this.ratingClick}>Rate past Appointment</Button>
               </div>
             </div>
           </div>
