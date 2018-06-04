@@ -10,7 +10,7 @@ class AppointmentsPage extends Component {
     return (
       <div>
         <Navbar display_backbutton={true} history={this.props.history}/>
-        <div className="ui container">
+        <div>
           <Appointments history={this.props.history} view={view} />
         </div>
       </div>
