@@ -39,7 +39,6 @@ class Appointments extends Component {
       this.state.modalHeader = "Appointment scheduled for the following date";
     }
 
-    this.modalHandler = this.modalHandler.bind(this);
   }
 
   modalHandler = (result, content) => {

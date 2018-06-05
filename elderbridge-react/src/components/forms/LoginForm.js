@@ -5,20 +5,24 @@ import InlineError from '../messages/InlineError';
 
 class LoginForm extends Component {
   state = {
-    data: {
-      email: '',
-      password: ''
-    },
+    email: "",
+    password: "",
     errors: {}
   };
 
-  onChange = e =>
-    this.setState({
-      data: { ...this.state.data, [e.target.name]: e.target.value }
-    });
+  handleChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+    this.setState({ [name]: value });
+  }
 
   onSubmit = () => {
-    const errors = this.validate(this.state.data);
+    const errors = this.validate({
+      email: this.state.email,
+      password: this.state.password
+    });
+
     this.setState({ errors });
     if (Object.keys(errors).length === 0) {
       this.props.submit(this.state.data);
@@ -28,37 +32,33 @@ class LoginForm extends Component {
   validate = (data) => {
     const errors = {};
     if (!Validator.isEmail(data.email)) errors.email = "Enter a valid email";
-    if (!data.password) errors.password = "Enter password";
+    if (!data.password) errors.password = "Enter a password";
     return errors;
   }
 
 
   render() {
-    const { data, errors } = this.state;
+    const { email, password, errors } = this.state;
 
     return (
       <Form size ="massive" onSubmit={this.onSubmit}>
         <Form.Field>
-          <label htmlFor="email">Email</label>
+          <label>Email</label>
           <input
-            type="email"
-            id="email"
             name="email"
             placeholder="example@example.com"
-            value={data.email}
-            onChange={this.onChange}
+            value={email}
+            onChange={this.handleChange}
           />
           {errors.email && <InlineError text={errors.email} />}
         </Form.Field>
         <Form.Field>
-          <label htmlFor="password">Password</label>
+          <label>Password</label>
           <input
-            type="password"
-            id="password"
             name="password"
             placeholder="**********"
-            value={data.password}
-            onChange={this.onChange}
+            value={password}
+            onChange={this.handleChange}
           />
           {errors.password && <InlineError text={errors.password} />}
         </Form.Field>

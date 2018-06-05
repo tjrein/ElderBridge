@@ -51,6 +51,7 @@ class RatingPage extends Component {
   });
 
   render() {
+    const {smile, frown, meh} = this.state
     return (
       <div>
         <Navbar display_backbutton={true} history={this.props.history}/>
@@ -61,7 +62,7 @@ class RatingPage extends Component {
                 <Button circular basic
                   size="massive"
                   id="smile"
-                  icon={<Icon id="smile-icon" fitted name="smile" className="outline" size="huge" color={this.state.smile} />}
+                  icon={<Icon id="smile-icon" fitted name="smile" className="outline" size="huge" color={smile} />}
                   onMouseEnter={this.handleHover}
                   onMouseLeave={this.handleLeave}
                   onClick={this.handleSelect}
@@ -71,7 +72,7 @@ class RatingPage extends Component {
                 <Button circular basic
                   size="massive"
                   id="meh"
-                  icon={<Icon name="meh" className="outline" size="huge" color={this.state.meh} />}
+                  icon={<Icon name="meh" className="outline" size="huge" color={meh} />}
                   onMouseEnter={this.handleHover}
                   onMouseLeave={this.handleLeave}
                   onClick={this.handleSelect}
@@ -81,7 +82,7 @@ class RatingPage extends Component {
                 <Button circular basic
                   size="massive"
                   id="frown"
-                  icon={<Icon name="frown" className="outline" size="huge" color={this.state.frown} />}
+                  icon={<Icon name="frown" className="outline" size="huge" color={frown} />}
                   onMouseEnter={this.handleHover}
                   onMouseLeave={this.handleLeave}
                   onClick={this.handleSelect}
