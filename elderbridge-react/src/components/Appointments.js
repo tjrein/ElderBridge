@@ -3,13 +3,12 @@ import BigCalendar from "react-big-calendar";
 import moment from "moment";
 import DefaultConfirm from "./DefaultConfirm";
 import ModalExampleShorthand from "./modals/ModalExampleShorthand";
-
+import WarningMessage from "./messages/WarningMessage";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
 
 class Appointments extends Component {
-
   constructor(props) {
     super(props);
 
@@ -26,7 +25,8 @@ class Appointments extends Component {
       openModal: false,
       modalContent: '',
       modalHeader: '',
-      newTime: null
+      newTime: null,
+      errorMessage: false
     }
 
     if (this.props.view === "week") {
@@ -47,6 +47,7 @@ class Appointments extends Component {
   }
 
   closeModal = () => this.modalHandler(false);
+  hideError = () => this.setState({warningMessage: false});
 
   cancelAppointment = result => {
     this.modalHandler(false);
@@ -112,6 +113,11 @@ class Appointments extends Component {
 
   onSlotClick(slotInfo) {
     if (this.props.view === "month") return;
+
+    if (Date.now() >= new Date(moment(slotInfo.start)).getTime()) {
+      return this.setState({warningMessage: true});
+    }
+
     const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm:ss A");
     this.modalHandler(true, formatted_time);
     this.setState({newTime: slotInfo.start});
@@ -127,6 +133,7 @@ class Appointments extends Component {
   render() {
     return (
       <div>
+        {this.state.warningMessage && <WarningMessage callback={this.hideError} /> }
         <ModalExampleShorthand
           view={this.props.view}
           open={this.state.openModal}

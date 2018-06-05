@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
 import Navbar from "../Navbar"
 import '../../../node_modules/font-awesome/css/font-awesome.min.css';
-import ConfirmMessage from '../messages/ConfirmMessage';
+import DashboardMessage from '../messages/DashboardMessage';
 
 class DashboardPage extends Component {
 
@@ -23,9 +23,9 @@ class DashboardPage extends Component {
   render() {
     let displayMessage = this.props.location && this.props.location.state && this.props.location.state.messageVisible
 
-    let confirmMessage = displayMessage ? (
+    let message = displayMessage ? (
       <div className="ui container">
-        <ConfirmMessage
+        <DashboardMessage
           history={this.props.history}
           content={this.props.location.state.content}
           header={this.props.location.state.header}
@@ -48,7 +48,7 @@ class DashboardPage extends Component {
     return (
       <div>
         <Navbar history={this.props.history} />
-        {confirmMessage}
+        {message}
         <div className="ui container">
           <div className="ui grid centered">
             {view_appointments_button}
