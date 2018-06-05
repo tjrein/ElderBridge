@@ -6,24 +6,39 @@ class RatingPage extends Component {
   state = {
     meh: "grey",
     frown: "grey",
-    smile: "grey"
+    smile: "grey",
+    selected: "",
+  };
+
+  handleSelect = e => {
+    let key = e.currentTarget.id;
+    let oldSelection = this.state.selected;
+    let color = this.determineColor(key);
+    let newState = { [key]: color, "selected": key };
+
+    if (oldSelection) {
+      newState[oldSelection] = "grey";
+    }
+
+    this.setState(newState);
   };
 
   handleLeave = e => {
     let key = e.currentTarget.id;
-    this.setState({ [key]: "grey" });
-  }
+
+    if (key !== this.state.selected) {
+      this.setState({ [key]: "grey" });
+    }
+  };
 
   handleHover = e => {
     let key = e.currentTarget.id;
-    let color = {
-      smile: "green",
-      meh: "yellow",
-      frown: "red"
-    }[key];
+    let color = this.determineColor(key);
 
     this.setState({ [key]: color });
-  }
+  };
+
+  determineColor = key => ({ smile: "green", meh: "yellow", frown: "red" }[key]);
 
   submit = e => this.props.history.push("/dashboard");
 
@@ -41,6 +56,7 @@ class RatingPage extends Component {
                   icon={<Icon id="smile-icon" fitted name="smile" className="outline" size="huge" color={this.state.smile} />}
                   onMouseEnter={this.handleHover}
                   onMouseLeave={this.handleLeave}
+                  onClick={this.handleSelect}
                 />
               </Grid.Column>
               <Grid.Column textAlign="center">
@@ -50,6 +66,7 @@ class RatingPage extends Component {
                   icon={<Icon name="meh" className="outline" size="huge" color={this.state.meh} />}
                   onMouseEnter={this.handleHover}
                   onMouseLeave={this.handleLeave}
+                  onClick={this.handleSelect}
                 />
               </Grid.Column>
               <Grid.Column textAlign="center">
@@ -59,6 +76,7 @@ class RatingPage extends Component {
                   icon={<Icon name="frown" className="outline" size="huge" color={this.state.frown} />}
                   onMouseEnter={this.handleHover}
                   onMouseLeave={this.handleLeave}
+                  onClick={this.handleSelect}
                 />
               </Grid.Column>
             </Grid.Row>
