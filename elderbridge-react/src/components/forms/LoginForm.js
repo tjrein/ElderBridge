@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import Validator from 'validator';
-import InlineError from '../messages/InlineError';
+import WarningMessage from '../messages/WarningMessage';
 
 class LoginForm extends Component {
   state = {
     email: "",
     password: "",
-    errors: {}
+    errors: [],
+    displayMessage: false,
+    messageHeader: "Login invalid!",
+    messageContent: "Please correct the errors above"
   };
+
+  hideMessage = () => this.setState({displayMessage: false, errors: [] });
 
   handleChange = (e) => {
     const target = e.target;
@@ -24,22 +29,33 @@ class LoginForm extends Component {
     });
 
     this.setState({ errors });
-    if (Object.keys(errors).length === 0) {
+    if (errors.length === 0) {
       this.props.submit(this.state.data);
+    } else {
+      this.setState({displayMessage: true});
     }
   }
 
   validate = (data) => {
-    const errors = {};
-    if (!Validator.isEmail(data.email)) errors.email = "Enter a valid email";
-    if (!data.password) errors.password = "Enter a password";
+    const errors = [];
+    if (!Validator.isEmail(data.email)) errors.push("Enter a valid email");
+    if (!data.password) errors.push("Enter a password");
     return errors;
   }
 
   render() {
-    const { email, password, errors } = this.state;
+    const { email, password, errors, displayMessage, messageHeader, messageContent } = this.state;
 
     return (
+      <div>
+      { displayMessage && <WarningMessage
+                            callback={this.hideMessage}
+                            className="negative"
+                            list={errors}
+                            header={messageHeader}
+                            content={messageContent}
+                            selfDestruct={false}
+                          />}
       <Form size ="massive" onSubmit={this.onSubmit}>
         <Form.Field>
           <label>Email</label>
@@ -49,7 +65,6 @@ class LoginForm extends Component {
             value={email}
             onChange={this.handleChange}
           />
-          {errors.email && <InlineError text={errors.email} />}
         </Form.Field>
         <Form.Field>
           <label>Password</label>
@@ -59,12 +74,12 @@ class LoginForm extends Component {
             value={password}
             onChange={this.handleChange}
           />
-          {errors.password && <InlineError text={errors.password} />}
         </Form.Field>
         <div className="ui container center aligned">
         <Button primary size="massive">Login</Button>
         </div>
       </Form>
+      </div>
     );
   }
 }

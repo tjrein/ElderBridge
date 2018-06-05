@@ -25,7 +25,9 @@ class Appointments extends Component {
       modalContent: '',
       modalHeader: '',
       newTime: null,
-      errorMessage: false
+      displayMessage: false,
+      messageHeader: "Appointment has already passed!",
+      messageContent: "Please schedule an appointment for a time in the future."
     }
 
     if (this.props.view === "week") {
@@ -45,7 +47,7 @@ class Appointments extends Component {
   }
 
   closeModal = () => this.modalHandler(false);
-  hideError = () => this.setState({warningMessage: false});
+  hideError = () => this.setState({displayMessage: false});
 
   cancelAppointment = result => {
     this.modalHandler(false);
@@ -113,7 +115,7 @@ class Appointments extends Component {
     if (this.props.view === "month") return;
 
     if (Date.now() >= new Date(moment(slotInfo.start)).getTime()) {
-      return this.setState({warningMessage: true});
+      return this.setState({displayMessage: true});
     }
 
     const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm:ss A");
@@ -129,25 +131,36 @@ class Appointments extends Component {
   }
 
   render() {
+    const { view } = this.props;
+    const {events, openModal, modalHeader, modalContent, displayMessage, messageHeader, messageContent } = this.state
+
+
     return (
       <div>
-        {this.state.warningMessage && <WarningMessage callback={this.hideError} /> }
+        { displayMessage && <WarningMessage
+                              list={[]}
+                              selfDestruct={true}
+                              className="warning"
+                              header={messageHeader}
+                              content={messageContent}
+                              callback={this.hideError}
+                            />}
         <ModalExampleShorthand
-          view={this.props.view}
-          open={this.state.openModal}
+          view={view}
+          open={openModal}
           cancel={this.cancelCallback}
           confirm={this.confirmCallback}
-          header = {this.state.modalHeader}
-          content={this.state.modalContent}
+          header = {modalHeader}
+          content={modalContent}
         />
         <BigCalendar
           selectable
           onSelectEvent={slotInfo => this.onEventClick(slotInfo)}
           onSelectSlot={slotInfo => this.onSlotClick(slotInfo) }
           defaultDate={new Date()}
-          defaultView={this.props.view}
-          views={[this.props.view]}
-          events={this.state.events}
+          defaultView={view}
+          views={[view]}
+          events={events}
           style={{ height: "100vh" }}
           step={30}
           timeslots={1}

@@ -34,7 +34,7 @@ class DashboardPage extends Component {
       </div>
     ) : "";
 
-    let view_appointments_button = sessionStorage.getItem('events') ? (
+    let viewAppointmentsBttn = sessionStorage.getItem('events') ? (
       <div className="row">
         <div>
           <i className="fa fa-clock-o fa-5x fa-fw" aria-hidden="true"></i>
@@ -51,7 +51,7 @@ class DashboardPage extends Component {
         {message}
         <div className="ui container">
           <div className="ui grid centered">
-            {view_appointments_button}
+            {viewAppointmentsBttn}
             <div className="row">
               <div>
                 <i className="fa fa-calendar-plus-o fa-5x fa-fw" aria-hidden="true"></i>

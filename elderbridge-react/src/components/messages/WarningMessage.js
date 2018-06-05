@@ -6,17 +6,24 @@ class WarningMessage extends Component {
   constructor(props) {
     super(props);
 
-    setTimeout(() => {
-      this.props.callback()
-    }, 3000);
+    if (this.props.selfDestruct) {
+      setTimeout(() => {
+        this.props.callback()
+      }, 4000);
+    }
   }
+
+  handleDismiss = () => this.props.callback();
 
   render() {
       return(
-        <Message warning
+        <Message
+          className={this.props.className}
+          list={this.props.list}
           size="massive"
-          header="Appointment has already passed"
-          content="Please schedule an appointment for a time in the future."
+          onDismiss={this.handleDismiss}
+          header={this.props.header}
+          content={this.props.content}
         />
       )
   }
