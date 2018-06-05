@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
-import DefaultConfirm from "./DefaultConfirm";
 import ModalExampleShorthand from "./modals/ModalExampleShorthand";
 import WarningMessage from "./messages/WarningMessage";
 import "react-big-calendar/lib/css/react-big-calendar.css";
@@ -50,8 +49,8 @@ class Appointments extends Component {
 
   cancelAppointment = result => {
     this.modalHandler(false);
+
     let scheduled_events = this.state.events;
-    let start_times = this.state.events.map(e => e.start);
     let date = new Date(moment(this.state.newTime));
 
     for (let i = 0; i < scheduled_events.length; i++) {
