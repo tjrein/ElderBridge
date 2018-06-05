@@ -10,15 +10,30 @@ class DashboardPage extends Component {
     const calendar_view = e.target.innerHTML.split(' ')[0] === "View" ? "month" : "week";
     this.props.history.push({
       pathname: "/appointments",
-      state: { calendar_view: calendar_view }
+      state: {
+        calendar_view: calendar_view,
+      }
     });
-  }
+  };
 
   ratingClick = (e) => {
     this.props.history.push({pathname: "/rate"})
   }
 
   render() {
+    let displayMessage = this.props.location && this.props.location.state && this.props.location.state.messageVisible
+
+    let confirmMessage = displayMessage ? (
+      <div className="ui container">
+        <ConfirmMessage
+          history={this.props.history}
+          content={this.props.location.state.content}
+          header={this.props.location.state.header}
+          positve={this.props.location.state.positive}
+        />
+      </div>
+    ) : "";
+
     let view_appointments_button = sessionStorage.getItem('events') ? (
       <div className="row">
         <div>
@@ -33,9 +48,7 @@ class DashboardPage extends Component {
     return (
       <div>
         <Navbar history={this.props.history} />
-        <div className="ui container">
-          <ConfirmMessage />
-        </div>
+        {confirmMessage}
         <div className="ui container">
           <div className="ui grid centered">
             {view_appointments_button}

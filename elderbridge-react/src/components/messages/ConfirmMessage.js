@@ -3,25 +3,22 @@ import { Message } from 'semantic-ui-react'
 
 class ConfirmMessage extends Component {
 
-  state = { visible: true }
+  state = { visible: false }
 
   handleDismiss = () => {
-    this.setState({ visible: false })
+    this.props.history.push({ state: {messageVisible: false} });
 
-  setTimeout(() => {
-    this.setState({ visible: true })
-  }, 2000)
-}
+  }
 
   render() {
       return(
-        <Message positive
+        <Message
+          positive={this.props.positive}
+          negative={!this.props.positive}
           size="massive"
-          visible={this.state.visible}
-          hidden={!this.state.visible}
           onDismiss={this.handleDismiss}
-          header='Welcome back!'
-          content='This is a special notification which you can dismiss.'
+          header={this.props.header}
+          content={this.props.content}
         />
       )
   }

@@ -77,15 +77,24 @@ class Appointments extends Component {
 
     if (result) {
       let scheduled_events = this.state.events;
-
-      scheduled_events.push({
+      let newEvent = {
         start: new Date(moment(this.state.newTime)),
         end: new Date(moment(this.state.newTime).add(1, "hours")),
         title: "Appointment"
-      });
+      };
 
-      this.eventHandler(scheduled_events)
-      this.props.history.push("/dashboard");
+      scheduled_events.push(newEvent);
+      this.eventHandler(scheduled_events);
+
+      this.props.history.push({
+        pathname: "/dashboard",
+        state: {
+          messageVisible: true,
+          content: moment(newEvent.start).format("dddd, MMMM Do YYYY, h:mm:ss A"),
+          header: "Appointment confirmed!",
+          positive: true
+        }
+      });
     }
 
     this.setState({newTime: null});

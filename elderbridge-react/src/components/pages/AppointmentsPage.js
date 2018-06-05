@@ -6,7 +6,6 @@ class AppointmentsPage extends Component {
 
   render() {
     const view = this.props.location.state.calendar_view;
-
     return (
       <div>
         <Navbar display_backbutton={true} history={this.props.history}/>
