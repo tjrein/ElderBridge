@@ -29,7 +29,7 @@ class DashboardPage extends Component {
           history={this.props.history}
           content={this.props.location.state.content}
           header={this.props.location.state.header}
-          positve={this.props.location.state.positive}
+          positive={this.props.location.state.positive}
         />
       </div>
     ) : "";

@@ -3,11 +3,8 @@ import { Message } from 'semantic-ui-react'
 
 class ConfirmMessage extends Component {
 
-  state = { visible: false }
-
   handleDismiss = () => {
     this.props.history.push({ state: {messageVisible: false} });
-
   }
 
   render() {

@@ -61,6 +61,16 @@ class Appointments extends Component {
     }
 
     this.eventHandler(scheduled_events);
+
+    this.props.history.push({
+      pathname: "/dashboard",
+      state: {
+        messageVisible: true,
+        content: moment(date.getTime()).format("dddd, MMMM Do YYYY, h:mm:ss A"),
+        header: "Appointment canceled!",
+        positive: false
+      }
+    });
   }
 
   eventHandler = newEvents => {
@@ -99,7 +109,6 @@ class Appointments extends Component {
 
     this.setState({newTime: null});
   }
-
 
   onSlotClick(slotInfo) {
     if (this.props.view === "month") return;

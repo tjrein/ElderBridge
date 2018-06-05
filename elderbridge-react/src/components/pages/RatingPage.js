@@ -40,7 +40,15 @@ class RatingPage extends Component {
 
   determineColor = key => ({ smile: "green", meh: "yellow", frown: "red" }[key]);
 
-  submit = e => this.props.history.push("/dashboard");
+  submit = e => this.props.history.push({
+    pathname:"/dashboard",
+    state: {
+      messageVisible: true,
+      content: "Thank you for your feedback.",
+      header: "Rating submitted!",
+      positive: true
+    }
+  });
 
   render() {
     return (
