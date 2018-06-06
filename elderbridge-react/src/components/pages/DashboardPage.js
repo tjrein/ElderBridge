@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Icon, Grid } from 'semantic-ui-react';
 import Navbar from "../Navbar"
-import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import DashboardMessage from '../messages/DashboardMessage';
 
 class DashboardPage extends Component {
@@ -35,14 +34,14 @@ class DashboardPage extends Component {
     ) : "";
 
     let viewAppointmentsBttn = sessionStorage.getItem('events') ? (
-      <div className="row">
+      <Grid.Row>
         <div>
-          <i className="fa fa-clock-o fa-5x fa-fw" aria-hidden="true"></i>
+          <Icon name="clock" className="outline dashboard-icon"  />
         </div>
-        <div className="eleven wide column">
+        <Grid.Column width={11}>
           <Button fluid primary size="massive" onClick={this.onClick}>View Appointments</Button>
-        </div>
-      </div>
+        </Grid.Column>
+      </Grid.Row>
     ) : "";
 
     return (
@@ -50,25 +49,25 @@ class DashboardPage extends Component {
         <Navbar history={this.props.history} />
         {message}
         <div className="ui container">
-          <div className="ui grid centered">
+          <Grid centered>
             {viewAppointmentsBttn}
-            <div className="row">
+            <Grid.Row>
               <div>
-                <i className="fa fa-calendar-plus-o fa-5x fa-fw" aria-hidden="true"></i>
+                <Icon name="calendar" className="plus outline dashboard-icon"  />
               </div>
-              <div className="eleven wide column">
+              <Grid.Column width={11}>
                 <Button fluid primary size="massive" onClick={this.onClick}>Schedule an Appointment</Button>
-              </div>
-            </div>
-            <div className="row">
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
               <div>
-                <i className="fa fa-smile-o fa-5x fa-fw" aria-hidden="true"></i>
+                <Icon name="smile" className="outline dashboard-icon"  />
               </div>
-              <div className="eleven wide column">
+              <Grid.Column width={11}>
                 <Button fluid primary size="massive" onClick={this.ratingClick}>Rate past Appointment</Button>
-              </div>
-            </div>
-          </div>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </div>
       </div>
     );

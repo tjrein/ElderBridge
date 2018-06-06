@@ -27,9 +27,11 @@ p, .content {
   font-size: 1.5em !important;
 }
 
-i {
+.dashboard-icon {
+  font-size: 5em !important;
+  text-align: center !important;
+  margin-top: 38px !important;
   color: #475B9E;
-  margin-top: 10px !important;
 }
 
 .ui.grid, .ui.form {
