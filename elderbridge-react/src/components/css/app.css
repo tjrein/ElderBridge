@@ -10,15 +10,28 @@ body {
   display: inline !important;
 }
 
+.header {
+  font-family: 'Josefin Slab' !important;
+}
+
+.ui.form textarea {
+  font-size: 1.5em !important;
+  font-family: 'Inconsolata' !important;
+}
+
+p, .content {
+  font-family: 'Inconsolata' !important;
+}
+
+.ui.modal>.content {
+  font-size: 1.5em !important;
+}
+
 i {
   color: #475B9E;
   margin-top: 10px !important;
 }
 
-.ui.grid {
-  margin-top: 75px !important;
-}
-
-.ui.form {
+.ui.grid, .ui.form {
   margin-top: 75px !important;
 }

@@ -67,7 +67,7 @@ class Appointments extends Component {
       pathname: "/dashboard",
       state: {
         messageVisible: true,
-        content: moment(date.getTime()).format("dddd, MMMM Do YYYY, h:mm:ss A"),
+        content: moment(date.getTime()).format("dddd, MMMM Do YYYY, h:mm A"),
         header: "Appointment canceled!",
         positive: false
       }
@@ -101,7 +101,7 @@ class Appointments extends Component {
         pathname: "/dashboard",
         state: {
           messageVisible: true,
-          content: moment(newEvent.start).format("dddd, MMMM Do YYYY, h:mm:ss A"),
+          content: moment(newEvent.start).format("dddd, MMMM Do YYYY, h:mm A"),
           header: "Appointment confirmed!",
           positive: true
         }
@@ -118,14 +118,14 @@ class Appointments extends Component {
       return this.setState({displayMessage: true});
     }
 
-    const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm:ss A");
+    const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm A");
     this.modalHandler(true, formatted_time);
     this.setState({newTime: slotInfo.start});
   }
 
   onEventClick(slotInfo) {
     if (this.props.view === "week") return;
-    const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm:ss A");
+    const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm A");
     this.modalHandler(true, formatted_time);
     this.setState({newTime: slotInfo.start});
   }
