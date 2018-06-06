@@ -42,10 +42,7 @@ class Appointments extends Component {
 
   }
 
-  modalHandler = (result, content) => {
-    this.setState({ openModal: result, modalContent: content });
-  }
-
+  modalHandler = (result, content) => this.setState({ openModal: result, modalContent: content });
   closeModal = () => this.modalHandler(false);
   hideError = () => this.setState({displayMessage: false});
 
@@ -86,48 +83,48 @@ class Appointments extends Component {
   scheduleAppointment = result =>  {
     this.modalHandler(false);
 
-    if (result) {
-      let scheduled_events = this.state.events;
-      let newEvent = {
-        start: new Date(moment(this.state.newTime)),
-        end: new Date(moment(this.state.newTime).add(1, "hours")),
-        title: "Appointment"
-      };
+    let scheduled_events = this.state.events;
+    let newEvent = {
+      start: new Date(moment(this.state.newTime)),
+      end: new Date(moment(this.state.newTime).add(1, "hours")),
+      title: "Appointment"
+    };
 
-      scheduled_events.push(newEvent);
-      this.eventHandler(scheduled_events);
+    scheduled_events.push(newEvent);
+    this.eventHandler(scheduled_events);
 
-      this.props.history.push({
-        pathname: "/dashboard",
-        state: {
-          messageVisible: true,
-          content: moment(newEvent.start).format("dddd, MMMM Do YYYY, h:mm A"),
-          header: "Appointment confirmed!",
-          positive: true
-        }
-      });
-    }
+    this.props.history.push({
+      pathname: "/dashboard",
+      state: {
+        messageVisible: true,
+        content: moment(newEvent.start).format("dddd, MMMM Do YYYY, h:mm A"),
+        header: "Appointment confirmed!",
+        positive: true
+      }
+    });
 
     this.setState({newTime: null});
   }
 
-  onSlotClick(slotInfo) {
+  onSlotClick = slotInfo => {
     if (this.props.view === "month") return;
 
     if (Date.now() >= new Date(moment(slotInfo.start)).getTime()) {
       return this.setState({displayMessage: true});
     }
 
-    const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm A");
-    this.modalHandler(true, formatted_time);
-    this.setState({newTime: slotInfo.start});
+    this.finishClick(slotInfo.start);
   }
 
-  onEventClick(slotInfo) {
+  onEventClick = slotInfo => {
     if (this.props.view === "week") return;
-    const formatted_time = moment(slotInfo.start).format("dddd, MMMM Do YYYY, h:mm A");
+    this.finishClick(slotInfo.start);
+  }
+
+  finishClick = start => {
+    const formatted_time = moment(start).format("dddd, MMMM Do YYYY, h:mm A");
     this.modalHandler(true, formatted_time);
-    this.setState({newTime: slotInfo.start});
+    this.setState({newTime: start});
   }
 
   render() {

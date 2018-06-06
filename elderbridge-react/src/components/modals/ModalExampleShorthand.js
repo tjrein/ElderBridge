@@ -4,13 +4,8 @@ import { Modal } from 'semantic-ui-react'
 
 class ModalExampleShorthand extends Component {
 
-  handleConfirm = (e, data) => {
-    this.props.confirm(true);
-  }
-
-  handleCancel = (e, data) => {
-    this.props.cancel(false);
-  }
+  handleConfirm = () => this.props.confirm();
+  handleCancel = () => this.props.cancel();
 
   render() {
     const actions = {
