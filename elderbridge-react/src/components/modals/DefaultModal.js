@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Modal } from 'semantic-ui-react'
 
 
-class ModalExampleShorthand extends Component {
+class DefaultModal extends Component {
 
   handleConfirm = () => this.props.confirm();
   handleCancel = () => this.props.cancel();
@@ -39,4 +39,4 @@ class ModalExampleShorthand extends Component {
     )
   }
 }
-export default ModalExampleShorthand
+export default DefaultModal

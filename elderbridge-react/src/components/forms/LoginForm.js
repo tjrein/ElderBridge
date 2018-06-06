@@ -15,7 +15,7 @@ class LoginForm extends Component {
 
   hideMessage = () => this.setState({displayMessage: false, errors: [] });
 
-  handleChange = (e) => {
+  handleChange = e => {
     const target = e.target;
     const value = target.value;
     const name = target.name;
@@ -36,7 +36,7 @@ class LoginForm extends Component {
     }
   }
 
-  validate = (data) => {
+  validate = data => {
     const errors = [];
     if (!Validator.isEmail(data.email)) errors.push("Enter a valid email");
     if (!data.password) errors.push("Enter a password");

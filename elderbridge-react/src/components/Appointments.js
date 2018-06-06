@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BigCalendar from "react-big-calendar";
 import moment from "moment";
-import ModalExampleShorthand from "./modals/ModalExampleShorthand";
+import DefaultModal from "./modals/DefaultModal";
 import WarningMessage from "./messages/WarningMessage";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -142,7 +142,7 @@ class Appointments extends Component {
                               content={messageContent}
                               callback={this.hideError}
                             />}
-        <ModalExampleShorthand
+        <DefaultModal
           view={view}
           open={openModal}
           cancel={this.cancelCallback}
