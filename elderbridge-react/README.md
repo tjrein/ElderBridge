@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-## Installation and usage Instructions
+## Installation and usage instructions
 
 1. Make sure you have npm and Node.js installed (https://nodejs.org/en/)
 
