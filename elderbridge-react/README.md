@@ -28,3 +28,7 @@ Control Flow
   * Click on an appointment to get its details.
   * From the modal, Click on `Cancel appointment` to remove the appointment from the calendar, or `Done` to close the modal.
 
+Live Demo
+------
+The application is stood up on Heroku and can be accessed at https://elderbridge.herokuapp.com/
+Be advised that it may take a several moments for the application to start. 
