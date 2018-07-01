@@ -24,7 +24,7 @@ Control Flow
   * Confirm the appointment from the modal 
 
 * View Appointments
-  * Click the 'View Appintments` button
+  * Click the `View Appintments` button
   * Click on an appointment to get its details.
   * From the modal, Click on `Cancel appointment` to remove the appointment from the calendar, or `Done` to close the modal.
 
