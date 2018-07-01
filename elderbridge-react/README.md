@@ -11,7 +11,7 @@ This application was built with React. [React Big Calendar](https://intljusticem
 
 Installation and Usage Instructions
 ------
-1. Make sure you have npm and Node.js installed (https://nodejs.org/en/)
+1. Make sure you have [npm and Node.js installed](https://nodejs.org/en/)
 2. In the project directory, run "npm install". This will install all the dependencies in "package.json" and "package-lock.json"
 3. To start the application, run "npm start". The application will be available at "localhost:3000"
 4. To login, supply a valid email and any password 
