@@ -19,15 +19,12 @@ Installation and Usage Instructions
 Control Flow
 ------
 * Schedule Appointments
-..* Click the `Schedule an an Appointment` button
-..* On the calendar, click an open timeslot to schedule the appointment
-..* Confirm the appointment from the modal 
+  * Click the `Schedule an an Appointment` button
+  * On the calendar, click an open timeslot to schedule the appointment
+  * Confirm the appointment from the modal 
 
 * View Appointments
-..* Click the 'View Appintments` button
-..* Click on an appointment to get its details.
-..* From the modal, Click on `Cancel appointment` to remove the appointment from the calendar, or `Done` to close the modal.
-
-This application supports adding appointments to an interactive calendar. After a user clicks the `Schedule an appointment` button, they are expected to click a timeslot to schedule an appointment. A user can view their appointments by selecting `View appointments`. When a user clicks 
-
+  * Click the 'View Appintments` button
+  * Click on an appointment to get its details.
+  * From the modal, Click on `Cancel appointment` to remove the appointment from the calendar, or `Done` to close the modal.
 
